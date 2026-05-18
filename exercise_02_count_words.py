@@ -28,4 +28,15 @@ def count_words(filename):
         # archivo contiene: "Hola mundo hola\nmundo python\n"
         count_words("texto.txt") -> {"hola": 2, "mundo": 2, "python": 1}
     """
-    pass  # Reemplazar con tu implementación
+      # Reemplazar con tu implementación
+    with open(filename) as archivo:
+        diccio={}
+        for palabra in archivo:
+            divi=palabra.split()
+            for separada in divi:
+                perfecta=separada.lower()
+                if perfecta in diccio:
+                    diccio[perfecta]+=1
+                else:
+                    diccio[perfecta]=1
+    return diccio
