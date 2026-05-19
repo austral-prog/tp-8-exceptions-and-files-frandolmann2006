@@ -34,4 +34,20 @@ def grades_stats(filename):
             "Cami": (10.0, 10.0, 10.0),
         }
     """
-    pass  # Reemplazar con tu implementación
+     # Reemplazar con tu implementación
+    with open(filename) as archivo:
+        dicc={}
+
+        for linea in archivo:
+            if linea.strip()=="":
+                pass
+            else:
+                contra=linea.split(':')
+                nombre,notas=contra
+                separadas=[float(n) for n in notas.split(',')]
+                promedio=sum(separadas)/len(separadas)
+                maximo=max(separadas)
+                minimo=min(separadas)
+                dicc[nombre]=(promedio,maximo,minimo)
+
+    return dicc
