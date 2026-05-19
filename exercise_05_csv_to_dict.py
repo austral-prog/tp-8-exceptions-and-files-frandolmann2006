@@ -1,4 +1,5 @@
 # Ejercicio 5 - CSV a lista de diccionarios
+from email.feedparser import headerRE
 
 
 def csv_to_dict(filename):
@@ -34,4 +35,17 @@ def csv_to_dict(filename):
             {"name": "Bob", "age": 25, "city": "Rosario"},
         ]
     """
-    pass  # Reemplazar con tu implementación
+     # Reemplazar con tu implementación
+    with open(filename) as archivo:
+        header=archivo.readline().strip()
+        claves=header.split(',')
+        lista=[]
+        for linea in archivo:
+            separado=linea.split(',')
+            name={claves[0]:separado[0],
+                claves[1]:int(separado[1]),
+                  claves[2]:separado[2].strip()}
+            lista.append(name)
+        if lista==[]:
+            return []
+    return lista
