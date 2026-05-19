@@ -42,4 +42,22 @@ def parse_log(filename):
             "WARN": ["lento"],
         }
     """
-    pass  # Reemplazar con tu implementación
+      # Reemplazar con tu implementación
+    diccio={}
+    with open(filename) as archivo:
+        for linea in archivo:
+            if linea.strip()=="":
+              pass
+            else:
+                if not ":" in linea:
+                    raise ValueError("invalid log line")
+                categoria=linea.split(':',1)
+                info,razon=categoria
+                info=info.strip()
+                razon=razon.strip()
+                if info in diccio:
+                    diccio[info].append(razon)
+                else:
+                    diccio[info]=[razon]
+
+    return diccio
